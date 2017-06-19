@@ -4,7 +4,7 @@
   },
   "arrow_spacing": {
     "name": "arrow_spacing",
-    "level": "warn"
+    "level": "error"
   },
   "no_tabs": {
     "name": "no_tabs",
@@ -76,7 +76,7 @@
   },
   "no_stand_alone_at": {
     "name": "no_stand_alone_at",
-    "level": "ignore"
+    "level": "warn"
   },
   "space_operators": {
     "name": "space_operators",
