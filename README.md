@@ -251,7 +251,7 @@ When declaring object literals:
 - With one key, value pair use a single line
 
 ```coffeescript
-car = make: "Toyota"
+car = make: 'Toyota'
 ```
 
 - With more than one key, value pair use multi-line declarations
@@ -498,7 +498,8 @@ return this # Yes
 return @ # No
 ```
 
-Avoid `return` where not required, unless the explicit return increases clarity.
+Use `return` the explicit return increases clarity.
+Always use `return` when returning multi-line chunks
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
 
