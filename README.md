@@ -52,31 +52,41 @@ The details in this guide have been very heavily inspired by several existing st
 ### Tabs or Spaces?
 
 Use **spaces only**, with **2 spaces** per indentation level. Never mix tabs and spaces.
-[`'no_tabs'`]
+```
+'no_tabs': {
+  'level': 'error'
+}
+```
 
 Indentation is critical to Coffeescript and is set to use 2 spaces
-[`'indentation': {
+```
+'indentation': {
   'value': 2
-}`]
+}
+```
 
 <a name="maximum_line_length"></a>
 ### Maximum Line Length
 
 Limit all lines to a maximum of 120 characters.
-[`'max_line_length': {
+```
+'max_line_length': {
   'value': 120,
   'level': 'warn',
   'limitComments': true
-}`]
+}
+```
 
 <a name="blank_lines"></a>
 ### Blank Lines
 
 Separate top-level function and class definitions with a single blank line.
-[`'newlines_after_classes': {
+```
+'newlines_after_classes': {
   'level': 1,
   'level': 'error'
-}`]
+}
+```
 
 Separate method definitions inside of a class with a single blank line.
 
@@ -113,9 +123,11 @@ bar:
 ### Semicolons
 
 No trailing semicolons
-[`'no_trailing_semicolons': {
+```
+'no_trailing_semicolons': {
   'level': 'error'
-}`]
+}
+```
 
 ```coffeescript
    console.log('a') # Yes
@@ -151,9 +163,11 @@ These statements should be grouped in the following order:
 <a name="whitespace"></a>
 ## Arrows
 Include spaces before and after an arrow _unless_ there are no arguments passed to the function in which case the preceding space can be omitted
-[`'arrow_spacing': {
+```
+'arrow_spacing': {
   'level': 'error'
-}`]
+}
+```
 ```coffeescript
     # Yes
     x(-> 3)
@@ -166,11 +180,13 @@ Include spaces before and after an arrow _unless_ there are no arguments passed 
 
 ## Braces
 Include whitespace around properties inside braces unless the braces are empty
-[`'braces_spacing': {
+```
+'braces_spacing': {
   'spaces': 1,
   'empty_object_spaces': 0,
   'level': 'error'
-}`]
+}
+```
 ```coffeescript
     # Yes
     { a: b }
@@ -185,13 +201,15 @@ Include whitespace around properties inside braces unless the braces are empty
 
 ## Colon assignment
 Include one space after a colon and no spaces before a colon
-[`'colon_assignment_spacing': {
+```
+'colon_assignment_spacing': {
   'level': 'error',
   'spacing': {
     'left': 0,
     'right': 1
   }
-}`]
+}
+```
 ```coffeescript
     # Yes
     object =
@@ -205,18 +223,22 @@ Include one space after a colon and no spaces before a colon
 ```
 
 ## Commas
-[`'spacing_after_comma': {
+```
+'spacing_after_comma': {
   'level': 'error'
-}`]
+}
+```
  ```coffeescript
     console.log(x, y) # Yes
     console.log(x,y) # No
  ```
 
 ## Always surround these binary operators with a **single space** on either side
-[`'space_operators': {
+```
+'space_operators': {
   'level': 'error'
-}`]
+}
+```
 
     - assignment: `=`
 
@@ -246,7 +268,9 @@ Include one space after a colon and no spaces before a colon
         ```
 
 No trailing whitespace on any line.
-[`'no_trailing_whitespace'`]
+```
+'no_trailing_whitespace'
+```
 
 ## Whitespace in Expressions and Statements
 
@@ -320,9 +344,11 @@ However, inline comments can be useful in certain scenarios:
 Use `camelCase` (with a leading lowercase character) to name all variables, methods, and object properties.
 
 Use `CamelCase` (with a leading uppercase character) to name all classes. _(This style is also commonly referred to as `PascalCase`, `CamelCaps`, or `CapWords`, among [other alternatives][camel-case-variations].)_
-[`'camel_case_classes': {
+```
+'camel_case_classes': {
   'level': 'error'
-}`]
+}
+```
 
 _(The **official** CoffeeScript convention is camelcase, because this simplifies interoperability with JavaScript. For more on this decision, see [here][coffeescript-issue-425].)_
 
@@ -384,9 +410,11 @@ foo = (arg1, arg2)-> # No
 ```
 
 Do not use parentheses when declaring functions that take no arguments:
-[`'no_empty_param_list': {
+```
+'no_empty_param_list': {
   'level': 'error'
-}`]
+}
+```
 
 ```coffeescript
 bar = -> # Yes
@@ -404,7 +432,9 @@ In cases where method calls are being chained and the code does not fit on a sin
 ```
 
 When calling functions, always use parentheses.
-[`'no_implicit_parens'`]
+```
+'no_implicit_parens'
+```
 
 ```coffeescript
 baz()
@@ -425,9 +455,11 @@ new Tag(new Value(a, b), new Arg(c))
 ## Strings
 
 Use string interpolation instead of string concatenation:
-[`'no_interpolation_in_single_quotes': {
+```
+'no_interpolation_in_single_quotes': {
   'level': 'error'
-}`]
+}
+```
 
 ```coffeescript
 "this is an #{adjective} string" # Yes
@@ -435,9 +467,11 @@ Use string interpolation instead of string concatenation:
 ```
 
 Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unless features like string interpolation are being used for the given string.
-[`'no_unnecessary_double_quotes': {
+```
+'no_unnecessary_double_quotes': {
   'level': 'error'
-}`]
+}
+```
 
 <a name="conditionals"></a>
 ## Conditionals
@@ -562,7 +596,9 @@ If a custom annotation is required, the annotation should be documented in the p
 <a name="miscellaneous"></a>
 ## Miscellaneous
 
-[`'prefer_english_operator'`]
+```
+'prefer_english_operator'
+```
 
 `and` is preferred over `&&`.
 
@@ -589,7 +625,9 @@ Array::slice # No
 ```
 
 Prefer `@property` over `this.property`.
-[`'no_this'`]
+```
+'no_this'
+```
 
 ```coffeescript
 return @property # Yes
@@ -638,7 +676,11 @@ console.log args... # Yes
 ```
 
 Use `+= 1` in favor of `++` to avoid confusion and unexpected behavior.
-[`'no_plusplus'`]
+```
+'no_plusplus': {
+  'level': 'error'
+}
+```
 
 [coffeescript]: http://jashkenas.github.com/coffee-script/
 [coffeescript-issue-425]: https://github.com/jashkenas/coffee-script/issues/425
