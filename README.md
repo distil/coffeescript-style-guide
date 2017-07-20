@@ -74,20 +74,10 @@ Do not include trailing whitespace on any lines.
 <a name="optional_commas"></a>
 ### Optional Commas
 
-Avoid the use of commas before newlines when properties or elements of an Object or Array are listed on separate lines.
+Always use commas where they would be used in JavaScript
 
 ```coffeescript
 # Yes
-foo = [
-  'some'
-  'string'
-  'values'
-]
-bar:
-  label: 'test'
-  value: 87
-
-# No
 foo = [
   'some',
   'string',
@@ -95,6 +85,16 @@ foo = [
 ]
 bar:
   label: 'test',
+  value: 87
+
+# No
+foo = [
+  'some'
+  'string'
+  'values'
+]
+bar:
+  label: 'test'
   value: 87
 ```
 
@@ -126,15 +126,15 @@ Avoid extraneous whitespace in the following situations:
 - Immediately inside parentheses or brackets
 
     ```coffeescript
-       ($ 'body') # Yes
-       ( $ 'body' ) # No
+       ($('body')) # Yes
+       ( $( 'body' ) ) # No
     ```
 
 - Immediately before a comma
 
     ```coffeescript
-       console.log x, y # Yes
-       console.log x , y # No
+       console.log(x, y) # Yes
+       console.log(x , y) # No
     ```
 
 Additional recommendations:
@@ -182,17 +182,17 @@ If a comment is short, the period at the end can be omitted.
 
 Block comments apply to the block of code that follows them.
 
-Each line of a block comment starts with a `#` and a single space, and should be indented at the same level of the code that it describes.
-
-Paragraphs inside of block comments are separated by a line containing a single `#`.
+Use the ### notation
 
 ```coffeescript
-  # This is a block comment. Note that if this were a real block
-  # comment, we would actually be describing the proceeding code.
-  #
-  # This is the second paragraph of the same block comment. Note
-  # that this paragraph was separated from the previous paragraph
-  # by a line containing a single comment character.
+  ###
+  This is a block comment. Note that if this were a real block
+  comment, we would actually be describing the proceeding code.
+
+  This is the second paragraph of the same block comment. Note
+  that this paragraph was separated from the previous paragraph
+  by a line containing a single comment character.
+  ###
 
   init()
   start()
@@ -231,16 +231,12 @@ Use `CamelCase` (with a leading uppercase character) to name all classes. _(This
 
 _(The **official** CoffeeScript convention is camelcase, because this simplifies interoperability with JavaScript. For more on this decision, see [here][coffeescript-issue-425].)_
 
-For constants, use all uppercase with underscores:
+For constants, use all uppercase with underscores (and only for the deepest nested layer of any comment object):
 
 ```coffeescript
 CONSTANT_LIKE_THIS
-```
 
-Methods and variables that are intended to be "private" should begin with a leading underscore:
-
-```coffeescript
-_privateMethod: ->
+constants.requestParams.UPDATE
 ```
 
 <a name="objects"></a>
@@ -309,9 +305,10 @@ In cases where method calls are being chained and the code does not fit on a sin
   .reduce((x, y) -> x + y)
 ```
 
-When calling functions, always use parentheses around function arguments for readability.
+When calling functions, always use parentheses.
 
 ```coffeescript
+baz()
 baz(12)
 
 brush.ellipse(x: 10, y: 20) # Braces can be omitted or included for readability
@@ -470,18 +467,18 @@ If a custom annotation is required, the annotation should be documented in the p
 
 `not` is preferred over `!`.
 
-`or=` should be used when possible:
+`or=` should NOT be used:
 
 ```coffeescript
-temp or= {} # Yes
-temp = temp || {} # No
+temp = temp || {} # Yes
+temp or= {} # No
 ```
 
-Prefer shorthand notation (`::`) for accessing an object's prototype:
+Prefer longhand notation (`.prototype`) for accessing an object's prototype:
 
 ```coffeescript
-Array::slice # Yes
-Array.prototype.slice # No
+Array.prototype.slice # Yes
+Array::slice # No
 ```
 
 Prefer `@property` over `this.property`.
@@ -489,16 +486,10 @@ Prefer `@property` over `this.property`.
 ```coffeescript
 return @property # Yes
 return this.property # No
+return @.property # No
 ```
 
-However, avoid the use of **standalone** `@`:
-
-```coffeescript
-return this # Yes
-return @ # No
-```
-
-Use `return` the explicit return increases clarity.
+Use `return` when the explicit return increases clarity.
 Always use `return` when returning multi-line chunks
 
 Use splats (`...`) when working with functions that accept variable numbers of arguments:
