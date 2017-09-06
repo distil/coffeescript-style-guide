@@ -162,7 +162,7 @@ These statements should be grouped in the following order:
 
 <a name="whitespace"></a>
 ## Arrows
-Include spaces before and after an arrow _unless_ there are no arguments passed to the function in which case the preceding space can be omitted
+Include spaces before and after an arrow _unless_ there are no arguments passed to the function in which case the preceding space must be omitted
 ```
 'arrow_spacing': {
   'level': 'error'
@@ -171,11 +171,11 @@ Include spaces before and after an arrow _unless_ there are no arguments passed 
 ```coffeescript
     # Yes
     x(-> 3)
-    x( -> 3)
     x((a, b) -> a)
 
     # No
     x((a,b)-> a)
+    x( -> 3)
 ```
 
 ## Braces
@@ -476,7 +476,7 @@ Prefer single quoted strings (`''`) instead of double quoted (`""`) strings, unl
 <a name="conditionals"></a>
 ## Conditionals
 
-Favor `if` over `unless` for negative conditions.
+Always use `if` over `unless` for negative conditions.
 
 ```coffeescript
 # No
@@ -575,14 +575,6 @@ The annotation keyword should be followed by a colon and a space, and a descript
   processPayload()
 ```
 
-If multiple lines are required by the description, indent subsequent lines with two spaces:
-
-```coffeescript
-  # TODO: Ensure that the value returned by this call falls within a certain
-  #   range, or throw an exception.
-  analyze()
-```
-
 Annotation types:
 
 - `TODO`: describe missing functionality that should be added at a later date
@@ -613,7 +605,7 @@ If a custom annotation is required, the annotation should be documented in the p
 `or=` should NOT be used:
 
 ```coffeescript
-temp = temp || {} # Yes
+temp = temp or {} # Yes
 temp or= {} # No
 ```
 
